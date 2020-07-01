@@ -64,4 +64,9 @@ public class Building {
     public void setPropertyType(String propertyType) {
         this.propertyType = propertyType;
     }
+
+    @Override
+    public String toString() {
+        return "id: " + this.id + ", market value: " + this.marketValue;
+    }
 }

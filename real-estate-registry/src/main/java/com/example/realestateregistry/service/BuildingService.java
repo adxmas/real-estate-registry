@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
 public class BuildingService {
 
     private final BuildingRepository buildingRepository;
+    private List<Building> buildingList = null;
 
     @Autowired
     public BuildingService(BuildingRepository buildingRepository) {
@@ -44,5 +46,23 @@ public class BuildingService {
         buildingToUpdate.setPropertyType(building.getPropertyType());
         buildingToUpdate.setSize(building.getSize());
         return buildingRepository.save(buildingToUpdate);
+    }
+
+    public List <Building> owner(String owner){
+        return buildingRepository.findAllByOwner(owner);
+    }
+
+    public String taxCalculation(String owner, List<Double> taxRate){
+        int index=0;
+        double sum =0;
+        buildingList = owner(owner);
+        for (Building build : buildingList) {
+            sum += build.getMarketValue() * taxRate.get(index);
+            index++;
+        }
+            return "tax for properties: " + buildingList.toString() + " " + '\n' +
+                    "with tax rates: " + taxRate + " " + '\n' +
+                    "total yearly tax for all properties combined: " + sum;
+
     }
 }

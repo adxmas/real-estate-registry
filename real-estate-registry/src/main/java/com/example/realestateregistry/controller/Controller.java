@@ -37,6 +37,17 @@ public class Controller {
         return buildingService.updateBuilding(id, building);
     }
 
+    @GetMapping("/owner/{owner}")
+    public List<Building> owner(@PathVariable("owner") String owner){
+        return buildingService.owner(owner);
+    }
+
+    @GetMapping("/tax/")
+    public String getCalculatedTaxes(@RequestParam String owner, @RequestParam List<Double> taxRate){
+        return buildingService.taxCalculation(owner, taxRate);
+    }
+
+
 
 
 

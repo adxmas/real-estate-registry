@@ -1,20 +1,27 @@
 package com.example.realestateregistry.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.sun.istack.NotNull;
+import io.swagger.annotations.ApiModelProperty;
+import org.springframework.lang.NonNullApi;
+import org.springframework.lang.Nullable;
+
+import javax.persistence.*;
 
 @Entity
 public class Building {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(hidden = true)
     private int id;
+
+    @Column(nullable = false)
     private String address;
+    @Column(nullable = false)
     private String owner;
     private double size;
     private double marketValue;
+    @Column(nullable = false)
     private String propertyType;
 
     public int getId() {

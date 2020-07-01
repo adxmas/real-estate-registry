@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RequestMapping("/rest")
 @RestController
 public class Controller {
 
@@ -38,8 +38,8 @@ public class Controller {
     }
 
     @GetMapping("/owner/{owner}")
-    public List<Building> owner(@PathVariable("owner") String owner){
-        return buildingService.owner(owner);
+    public List<Building> getBuildingsByOwner(@PathVariable("owner") String owner){
+        return buildingService.getBuildingsByOwner(owner);
     }
 
     @GetMapping("/tax/")

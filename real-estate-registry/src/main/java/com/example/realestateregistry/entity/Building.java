@@ -24,6 +24,15 @@ public class Building {
     @Column(nullable = false)
     private String propertyType;
 
+    public Building(int id, String address, String owner, double size, double marketValue, String propertyType) {
+        this.id = id;
+        this.address = address;
+        this.owner = owner;
+        this.size = size;
+        this.marketValue = marketValue;
+        this.propertyType = propertyType;
+    }
+
     public int getId() {
         return id;
     }

@@ -1,2 +1,2 @@
 # real-estate-registry
-real estate registry crud with springboot, h2, jpa
+real estate registry crud with springboot, h2, jpa, thymeleaf, swagger
